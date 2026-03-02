@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLD Problem • Awesome Low Level Design</title>
+    <meta
+      name="description"
+      content="Detailed view for a Low Level Design interview problem from the Awesome LLD repository."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="../images/lld-repo-logo.png" />
+  </head>
+  <body data-page="problem">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="logo-block">
+          <a href="./index.html" class="logo-link" aria-label="Back to overview">
+            <img
+              src="../images/lld-repo-logo.png"
+              alt="LLD Repo Logo"
+              class="logo"
+            />
+          </a>
+          <div class="brand">
+            <span class="brand-title">Awesome LLD Prep</span>
+            <span class="brand-subtitle">Problem detail</span>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Primary">
+          <a href="./index.html#lld-problems">Problems</a>
+          <a href="./index.html#fundamentals">OOP</a>
+          <a href="./index.html#design-patterns">Patterns</a>
+          <a href="./index.html#concurrency">Concurrency</a>
+        </nav>
+        <button
+          class="icon-button"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <span class="icon-moon" aria-hidden="true">●</span>
+        </button>
+      </header>
+
+      <main class="problem-main">
+        <section class="problem-hero">
+          <div class="problem-hero-inner">
+            <div class="problem-hero-meta">
+              <a href="./index.html#lld-problems" class="breadcrumb-link">
+                ← Back to all LLD problems
+              </a>
+              <span class="pill-heading" id="problemDifficulty"></span>
+            </div>
+            <h1 id="problemTitle">Loading problem…</h1>
+            <p id="problemSummary" class="problem-summary"></p>
+          </div>
+        </section>
+
+        <section class="problem-content-section">
+          <div class="problem-layout">
+            <article id="problemBody" class="markdown-body">
+              <!-- Filled dynamically from markdown -->
+            </article>
+            <aside class="problem-side">
+              <div class="card problem-meta-card">
+                <h2>About this problem</h2>
+                <dl class="meta-list">
+                  <div>
+                    <dt>Difficulty</dt>
+                    <dd id="metaDifficulty">–</dd>
+                  </div>
+                  <div>
+                    <dt>Category</dt>
+                    <dd>Low Level Design</dd>
+                  </div>
+                  <div>
+                    <dt>Source file</dt>
+                    <dd id="metaSourceFile">–</dd>
+                  </div>
+                </dl>
+                <button
+                  id="detailProgressToggle"
+                  class="btn ghost inline detail-progress-toggle"
+                  type="button"
+                >
+                  Mark as completed
+                </button>
+                <p class="detail-progress-note">
+                  Progress is stored locally in this browser and reflected on the overview
+                  page.
+                </p>
+                <a
+                  id="openMarkdownLink"
+                  class="btn ghost inline"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open original markdown
+                </a>
+              </div>
+              <div class="card problem-hint-card">
+                <h2>Suggested flow</h2>
+                <ol>
+                  <li>Clarify requirements and constraints.</li>
+                  <li>Identify core entities and relationships.</li>
+                  <li>Sketch UML (classes, key interactions).</li>
+                  <li>Call out patterns and trade-offs.</li>
+                </ol>
+                <a
+                  class="link-subtle"
+                  href="https://blog.algomaster.io/p/how-to-answer-a-lld-interview-problem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read full LLD answer guide →
+                </a>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-main">
+          <div>
+            <h3>Keep exploring</h3>
+            <p>
+              Jump back to the overview to practice more designs and reinforce key
+              concepts.
+            </p>
+          </div>
+          <div class="footer-actions">
+            <a class="btn ghost" href="./index.html#lld-problems">
+              Browse all problems
+            </a>
+          </div>
+        </div>
+        <p class="footer-meta">
+          If this repository helps your prep, consider starring it on GitHub and sharing
+          it with friends.
+        </p>
+      </footer>
+    </div>
+
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+      ↑
+    </button>
+
+    <script src="./script.js"></script>
+    <script src="./problem.js"></script>
+  </body>
+  </html>
+

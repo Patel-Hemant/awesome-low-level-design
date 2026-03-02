@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awesome Low Level Design Prep</title>
+    <meta
+      name="description"
+      content="Curated roadmap to prepare for Low Level Design (LLD) interviews: OOP, design principles, patterns, UML, concurrency, and hands-on problems."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="../images/lld-repo-logo.png" />
+  </head>
+  <body data-page="overview">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="logo-block">
+          <img
+            src="../images/lld-repo-logo.png"
+            alt="LLD Repo Logo"
+            class="logo"
+          />
+          <div class="brand">
+            <span class="brand-title">Awesome LLD Prep with Hemant</span>
+            <span class="brand-subtitle">Interview-focused design roadmap</span>
+          </div>
+        </div>
+        <nav class="top-nav" aria-label="Primary">
+          <a href="#fundamentals">OOP</a>
+          <a href="#design-principles">Principles</a>
+          <a href="#design-patterns">Patterns</a>
+          <a href="#uml">UML</a>
+          <a href="#concurrency">Concurrency</a>
+          <a href="#lld-problems">Problems</a>
+          <a href="#resources">Resources</a>
+        </nav>
+        <button
+          class="icon-button"
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark mode"
+        >
+          <span class="icon-moon" aria-hidden="true">●</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h1>Master Low Level Design Interviews</h1>
+            <p class="hero-tagline">
+              A single, premium dashboard for everything in this repository:
+              OOP fundamentals, design patterns, UML, concurrency, and a rich
+              set of interview problems.
+            </p>
+            <div class="hero-actions">
+              <a
+                href="https://algomaster.io/learn/lld"
+                class="btn primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore full LLD course
+              </a>
+              <a
+                href="https://blog.algomaster.io/"
+                class="btn ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join AlgoMaster newsletter
+              </a>
+            </div>
+            <p class="hero-meta">
+              Curated from
+              <code>README.md</code> in this repository — optimized for fast,
+              focused interview preparation.
+            </p>
+          </div>
+        </section>
+
+        <section class="search-strip" aria-label="Quick search">
+          <div class="search-inner">
+            <label for="globalSearch" class="search-label"
+              >Quick find a topic</label
+            >
+            <div class="search-control">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input
+                id="globalSearch"
+                type="search"
+                placeholder="Search across topics, patterns, and problems..."
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section id="fundamentals" class="section">
+          <header class="section-header">
+            <h2>🧱 OOP Fundamentals</h2>
+            <p>Refresh the core object-oriented concepts that power every LLD solution.</p>
+          </header>
+          <div class="grid grid-3">
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/classes-and-objects"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="classes objects oop"
+            >
+              <h3>Classes and Objects</h3>
+              <p>Understand identity, state, and behavior in object-oriented systems.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/enums"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="enums enumerations"
+            >
+              <h3>Enums</h3>
+              <p>Model finite sets of values cleanly in your domain.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/interfaces"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="interfaces contracts"
+            >
+              <h3>Interfaces</h3>
+              <p>Define contracts and decouple implementations for flexibility.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/encapsulation"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="encapsulation information hiding"
+            >
+              <h3>Encapsulation</h3>
+              <p>Protect invariants and keep mutable state under control.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/abstraction"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="abstraction"
+            >
+              <h3>Abstraction</h3>
+              <p>Focus on what matters by hiding unneeded details.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/inheritance"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="inheritance"
+            >
+              <h3>Inheritance</h3>
+              <p>Reuse behavior responsibly with proper hierarchies.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/polymorphism"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="polymorphism late binding"
+            >
+              <h3>Polymorphism</h3>
+              <p>Swap implementations seamlessly without changing clients.</p>
+            </a>
+          </div>
+
+          <div class="subsection">
+            <header class="section-header compact">
+              <h3>🔗 Class Relationships</h3>
+              <p>Four core ways objects relate to each other in real systems.</p>
+            </header>
+            <div class="relationships-grid">
+              <a
+                class="card resource-card relationship-card"
+                href="https://algomaster.io/learn/lld/association"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-search="association"
+              >
+                <div class="relationship-header">
+                  <span class="relationship-tag">R1</span>
+                  <h3>Association</h3>
+                </div>
+                <p>
+                  Generic “uses-a” link between independent objects, often
+                  many-to-many.
+                </p>
+              </a>
+              <a
+                class="card resource-card relationship-card"
+                href="https://algomaster.io/learn/lld/aggregation"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-search="aggregation"
+              >
+                <div class="relationship-header">
+                  <span class="relationship-tag">R2</span>
+                  <h3>Aggregation</h3>
+                </div>
+                <p>
+                  Whole–part relationship where parts can live independently of
+                  the whole.
+                </p>
+              </a>
+              <a
+                class="card resource-card relationship-card"
+                href="https://algomaster.io/learn/lld/composition"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-search="composition"
+              >
+                <div class="relationship-header">
+                  <span class="relationship-tag">R3</span>
+                  <h3>Composition</h3>
+                </div>
+                <p>
+                  Strong ownership: parts are created and destroyed with the
+                  whole.
+                </p>
+              </a>
+              <a
+                class="card resource-card relationship-card"
+                href="https://algomaster.io/learn/lld/dependency"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-search="dependency"
+              >
+                <div class="relationship-header">
+                  <span class="relationship-tag">R4</span>
+                  <h3>Dependency</h3>
+                </div>
+                <p>
+                  One class temporarily depends on another (e.g. as a method
+                  parameter).
+                </p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section id="design-principles" class="section">
+          <header class="section-header">
+            <h2>🧭 Design Principles</h2>
+            <p>Ground rules to keep your designs simple, flexible, and maintainable.</p>
+          </header>
+          <div class="grid grid-2">
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/dry"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="dry don't repeat yourself"
+            >
+              <h3>DRY Principle</h3>
+              <p>Eliminate duplication to reduce bugs and ease refactoring.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/yagni"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="yagni you aren't gonna need it"
+            >
+              <h3>YAGNI Principle</h3>
+              <p>Avoid speculative complexity; build only what you truly need.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/kiss"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="kiss keep it simple"
+            >
+              <h3>KISS Principle</h3>
+              <p>Prefer straightforward designs that are easy to reason about.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://medium.com/backticks-tildes/the-s-o-l-i-d-principles-in-pictures-b34ce2f1e898"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="solid principles pictures"
+            >
+              <h3>SOLID (Visual)</h3>
+              <p>See SOLID principles explained with intuitive diagrams.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://blog.algomaster.io/p/solid-principles-explained-with-code"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="solid principles code examples"
+            >
+              <h3>SOLID (Code)</h3>
+              <p>Deep dive into SOLID with concrete, code-based examples.</p>
+            </a>
+          </div>
+        </section>
+
+        <section id="design-patterns" class="section">
+          <header class="section-header">
+            <h2>🧩 Design Patterns</h2>
+            <p>Classic patterns to structure object interactions and responsibilities.</p>
+            <div class="patterns-progress">
+              <span id="patternsProgressText">Completed 0 / 23</span>
+              <div class="progress-bar">
+                <div
+                  id="patternsProgressBar"
+                  class="progress-bar-fill"
+                ></div>
+              </div>
+            </div>
+          </header>
+          <div class="patterns-layout">
+            <div class="patterns-column">
+              <h3 class="pill-heading">Creational</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/singleton"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="singleton creational pattern"
+                    data-pattern-id="singleton"
+                    data-pattern-category="creational"
+                  >
+                    <span class="pattern-card-title">Singleton</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Singleton pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/factory-method"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="factory method pattern"
+                    data-pattern-id="factory-method"
+                    data-pattern-category="creational"
+                  >
+                    <span class="pattern-card-title">Factory Method</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Factory Method pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/abstract-factory"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="abstract factory pattern"
+                    data-pattern-id="abstract-factory"
+                    data-pattern-category="creational"
+                  >
+                    <span class="pattern-card-title">Abstract Factory</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Abstract Factory pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/builder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="builder pattern"
+                    data-pattern-id="builder"
+                    data-pattern-category="creational"
+                  >
+                    <span class="pattern-card-title">Builder</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Builder pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/prototype"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="prototype pattern"
+                    data-pattern-id="prototype"
+                    data-pattern-category="creational"
+                  >
+                    <span class="pattern-card-title">Prototype</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Prototype pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="patterns-column">
+              <h3 class="pill-heading">Structural</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/adapter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="adapter pattern"
+                    data-pattern-id="adapter"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Adapter</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Adapter pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/bridge"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="bridge pattern"
+                    data-pattern-id="bridge"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Bridge</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Bridge pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/composite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="composite pattern"
+                    data-pattern-id="composite"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Composite</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Composite pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/decorator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="decorator pattern"
+                    data-pattern-id="decorator"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Decorator</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Decorator pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/facade"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="facade pattern"
+                    data-pattern-id="facade"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Facade</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Facade pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/flyweight"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="flyweight pattern"
+                    data-pattern-id="flyweight"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Flyweight</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Flyweight pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/proxy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="proxy pattern"
+                    data-pattern-id="proxy"
+                    data-pattern-category="structural"
+                  >
+                    <span class="pattern-card-title">Proxy</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Proxy pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="patterns-column">
+              <h3 class="pill-heading">Behavioral</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/iterator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="iterator pattern"
+                    data-pattern-id="iterator"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Iterator</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Iterator pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/observer"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="observer pattern"
+                    data-pattern-id="observer"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Observer</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Observer pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/strategy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="strategy pattern"
+                    data-pattern-id="strategy"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Strategy</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Strategy pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/command"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="command pattern"
+                    data-pattern-id="command"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Command</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Command pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/state"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="state pattern"
+                    data-pattern-id="state"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">State</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for State pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/template-method"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="template method pattern"
+                    data-pattern-id="template-method"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Template Method</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Template Method pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/visitor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="visitor pattern"
+                    data-pattern-id="visitor"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Visitor</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Visitor pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/mediator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="mediator pattern"
+                    data-pattern-id="mediator"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Mediator</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Mediator pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/memento"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="memento pattern"
+                    data-pattern-id="memento"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Memento</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Memento pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card pattern-card"
+                    href="https://algomaster.io/learn/lld/chain-of-responsibility"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="chain of responsibility pattern"
+                    data-pattern-id="chain-of-responsibility"
+                    data-pattern-category="behavioral"
+                  >
+                    <span class="pattern-card-title">Chain of Responsibility</span>
+                    <button
+                      class="pattern-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Chain of Responsibility pattern"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="uml" class="section">
+          <header class="section-header">
+            <h2>🗂️ UML Diagrams</h2>
+            <p>Visual tools to communicate your design concisely in interviews.</p>
+          </header>
+          <div class="grid grid-3">
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/class-diagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="uml class diagram"
+            >
+              <h3>Class Diagram</h3>
+              <p>Show classes, relationships, and key attributes/operations.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/use-case-diagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="uml use case diagram"
+            >
+              <h3>Use Case Diagram</h3>
+              <p>Capture high-level interactions between actors and system.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/sequence-diagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="uml sequence diagram"
+            >
+              <h3>Sequence Diagram</h3>
+              <p>Explain ordering of calls for a specific scenario.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/activity-diagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="uml activity diagram"
+            >
+              <h3>Activity Diagram</h3>
+              <p>Model workflows, branching, and parallelism in behavior.</p>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/lld/state-machine-diagram"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="uml state machine diagram"
+            >
+              <h3>State Machine Diagram</h3>
+              <p>Track lifecycle states and transitions of key entities.</p>
+            </a>
+          </div>
+        </section>
+
+        <section id="concurrency" class="section">
+          <header class="section-header">
+            <h2>⏱️ Concurrency &amp; Multithreading</h2>
+            <p>A curated path from foundations to real-world patterns.</p>
+          </header>
+
+          <div class="concurrency-layout">
+            <div class="concurrency-group-card">
+              <h3 class="group-title">Concurrency 101 – learning path</h3>
+              <p class="group-subtitle">
+                Start here to build an intuitive foundation for threads and parallel work.
+              </p>
+              <ol class="concurrency-roadmap compact">
+                <li>
+                  <a
+                    class="roadmap-step"
+                    href="https://algomaster.io/learn/concurrency-interview/introduction-to-concurrency"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="introduction concurrency"
+                  >
+                    <div class="roadmap-step-header">
+                      <span class="roadmap-step-index">F1</span>
+                      <h4>Introduction to Concurrency</h4>
+                    </div>
+                    <p>Why concurrency exists and when you actually need it.</p>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="roadmap-step"
+                    href="https://algomaster.io/learn/concurrency-interview/concurrency-vs-parallelism"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="concurrency vs parallelism"
+                  >
+                    <div class="roadmap-step-header">
+                      <span class="roadmap-step-index">F2</span>
+                      <h4>Concurrency vs Parallelism</h4>
+                    </div>
+                    <p>Understand the difference between overlapping and simultaneous work.</p>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="roadmap-step"
+                    href="https://algomaster.io/learn/concurrency-interview/processes-vs-threads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="processes vs threads"
+                  >
+                    <div class="roadmap-step-header">
+                      <span class="roadmap-step-index">F3</span>
+                      <h4>Processes vs Threads</h4>
+                    </div>
+                    <p>Explore isolation, shared memory, and where each model fits.</p>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="roadmap-step"
+                    href="https://algomaster.io/learn/concurrency-interview/thread-lifecycle-and-states"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="thread lifecycle states"
+                  >
+                    <div class="roadmap-step-header">
+                      <span class="roadmap-step-index">F4</span>
+                      <h4>Thread Lifecycle &amp; States</h4>
+                    </div>
+                    <p>Learn how threads are created, scheduled, paused, and finished.</p>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="roadmap-step"
+                    href="https://algomaster.io/learn/concurrency-interview/race-conditions-and-critical-sections"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="race conditions critical sections"
+                  >
+                    <div class="roadmap-step-header">
+                      <span class="roadmap-step-index">F5</span>
+                      <h4>Race Conditions &amp; Critical Sections</h4>
+                    </div>
+                    <p>See where things break without proper synchronization.</p>
+                  </a>
+                </li>
+              </ol>
+            </div>
+
+            <div class="concurrency-group-card">
+              <h3 class="group-title">Synchronization primitives – learning path</h3>
+              <p class="group-subtitle">
+                Core building blocks to coordinate threads safely.
+              </p>
+              <ol class="concurrency-roadmap compact">
+                <li>
+                  <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/mutex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="mutex mutual exclusion"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S1</span>
+                        <h4>Mutex (Mutual Exclusion)</h4>
+                      </div>
+                      <p>Single-owner lock for protecting critical sections.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/semaphores"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="semaphores"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S2</span>
+                        <h4>Semaphores</h4>
+                      </div>
+                      <p>Counting permits to control access to limited resources.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/condition-variables"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="condition variables"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S3</span>
+                        <h4>Condition Variables</h4>
+                      </div>
+                      <p>Wait and signal patterns for state changes.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/coarse-vs-fine-grained-locking"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="coarse fine grained locking"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S4</span>
+                        <h4>Coarse vs Fine-grained Locking</h4>
+                      </div>
+                      <p>Balance simplicity and throughput in lock granularity.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/reentrant-locks"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="reentrant locks"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S5</span>
+                        <h4>Reentrant Locks</h4>
+                      </div>
+                      <p>Allow the same thread to re-acquire the same lock safely.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/try-lock-and-timed-locking"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="try lock timed locking"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S6</span>
+                        <h4>Try-Lock &amp; Timed Locking</h4>
+                      </div>
+                      <p>Avoid unbounded waiting with non-blocking acquisition.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/compare-and-swap"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="compare and swap cas"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">S7</span>
+                        <h4>Compare-and-Swap (CAS)</h4>
+                      </div>
+                      <p>Low-level atomic primitive for lock-free algorithms.</p>
+                    </a>
+                  </li>
+              </ol>
+            </div>
+
+            <div class="concurrency-group-card">
+              <h3 class="group-title">Concurrency challenges – learning path</h3>
+              <p class="group-subtitle">
+                Classic failure modes every system designer should recognise.
+              </p>
+              <ol class="concurrency-roadmap compact">
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/deadlock"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="deadlock"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">C1</span>
+                        <h4>Deadlock</h4>
+                      </div>
+                      <p>When threads wait on each other forever due to lock ordering.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/livelock"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="livelock"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">C2</span>
+                        <h4>Livelock</h4>
+                      </div>
+                      <p>System keeps changing state but makes no real progress.</p>
+                    </a>
+                  </li>
+              </ol>
+            </div>
+
+            <div class="concurrency-group-card">
+              <h3 class="group-title">Concurrency patterns – learning path</h3>
+              <p class="group-subtitle">
+                Reusable approaches for queues, workers, and shared resources.
+              </p>
+              <ol class="concurrency-roadmap compact">
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/signaling-pattern"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="signaling pattern"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">P1</span>
+                        <h4>Signaling Pattern</h4>
+                      </div>
+                      <p>Notify waiting threads when a particular condition is met.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/thread-pool-pattern"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="thread pool pattern"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">P2</span>
+                        <h4>Thread Pool Pattern</h4>
+                      </div>
+                      <p>Reuse a bounded set of workers to process many tasks.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/producer-consumer-pattern"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="producer consumer pattern"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">P3</span>
+                        <h4>Producer-Consumer Pattern</h4>
+                      </div>
+                      <p>Decouple producers and consumers using queues and signaling.</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="roadmap-step"
+                      href="https://algomaster.io/learn/concurrency-interview/reader-writer-pattern"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-search="reader writer pattern"
+                    >
+                      <div class="roadmap-step-header">
+                        <span class="roadmap-step-index">P4</span>
+                        <h4>Reader-Writer Pattern</h4>
+                      </div>
+                      <p>Optimise shared data access when reads dominate writes.</p>
+                    </a>
+                  </li>
+              </ol>
+            </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="lld-guide" class="section">
+          <header class="section-header">
+            <h2>✅ Answering LLD Interview Problems</h2>
+            <p>Structure your approach, communicate clearly, and avoid common pitfalls.</p>
+          </header>
+          <div class="grid grid-2">
+            <article class="card">
+              <h3>Interview Template</h3>
+              <p>
+                Learn a repeatable framework for tackling any LLD question — from clarifying
+                requirements to designing classes, relationships, and key flows.
+              </p>
+              <a
+                class="btn inline"
+                href="https://blog.algomaster.io/p/how-to-answer-a-lld-interview-problem"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read the full guide</a
+              >
+            </article>
+            <article class="card card-image">
+              <img
+                src="../images/interview-template.png"
+                alt="LLD interview answer template"
+              />
+            </article>
+          </div>
+        </section>
+
+        <section id="lld-problems" class="section">
+          <header class="section-header">
+            <h2>💻 LLD Interview Problems</h2>
+            <p>Practice end-to-end designs with increasing complexity.</p>
+            <div class="problems-controls">
+              <div class="progress-summary">
+                <span id="problemsProgressText">Completed 0 / 33</span>
+                <div class="progress-bar">
+                  <div
+                    id="problemsProgressBar"
+                    class="progress-bar-fill"
+                  ></div>
+                </div>
+              </div>
+              <div class="problems-filters" aria-label="Filter problems">
+                <button
+                  type="button"
+                  class="pill-filter is-active"
+                  data-filter="all"
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  class="pill-filter"
+                  data-filter="easy"
+                >
+                  Easy
+                </button>
+                <button
+                  type="button"
+                  class="pill-filter"
+                  data-filter="medium"
+                >
+                  Medium
+                </button>
+                <button
+                  type="button"
+                  class="pill-filter"
+                  data-filter="hard"
+                >
+                  Hard
+                </button>
+                <button
+                  type="button"
+                  class="pill-filter"
+                  data-filter="completed"
+                >
+                  Completed
+                </button>
+                <button
+                  type="button"
+                  class="pill-filter"
+                  data-filter="pending"
+                >
+                  Pending
+                </button>
+              </div>
+              <div class="progress-actions">
+                <button
+                  id="exportProgressBtn"
+                  type="button"
+                  class="btn ghost inline"
+                >
+                  Export progress
+                </button>
+                <button
+                  id="importProgressBtn"
+                  type="button"
+                  class="btn ghost inline"
+                >
+                  Import progress
+                </button>
+              </div>
+            </div>
+          </header>
+          <div class="problems-layout">
+            <div class="problems-column">
+              <h3 class="pill-heading">Easy</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=parking-lot"
+                    data-search="parking lot easy lld"
+                    data-problem-id="parking-lot"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title">Design Parking Lot</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Parking Lot"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=stack-overflow"
+                    data-search="stack overflow easy lld"
+                    data-problem-id="stack-overflow"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title">Design Stack Overflow</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Stack Overflow"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=vending-machine"
+                    data-search="vending machine easy lld"
+                    data-problem-id="vending-machine"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title">Design a Vending Machine</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Vending Machine"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=logging-framework"
+                    data-search="logging framework easy lld"
+                    data-problem-id="logging-framework"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title">Design Logging Framework</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Logging Framework"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=traffic-signal"
+                    data-search="traffic signal system easy lld"
+                    data-problem-id="traffic-signal"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title"
+                      >Design Traffic Signal Control System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Traffic Signal Control System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=coffee-vending-machine"
+                    data-search="coffee vending machine easy lld"
+                    data-problem-id="coffee-vending-machine"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title"
+                      >Design Coffee Vending Machine</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Coffee Vending Machine"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=task-management-system"
+                    data-search="task management system easy lld"
+                    data-problem-id="task-management-system"
+                    data-difficulty="easy"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Task Management System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Task Management System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="problems-column">
+              <h3 class="pill-heading">Medium</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=atm"
+                    data-search="atm medium lld"
+                    data-problem-id="atm"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title">Design ATM</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design ATM"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=linkedin"
+                    data-search="linkedin medium lld"
+                    data-problem-id="linkedin"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title">Design LinkedIn</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design LinkedIn"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=lru-cache"
+                    data-search="lru cache medium lld"
+                    data-problem-id="lru-cache"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title">Design LRU Cache</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design LRU Cache"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=tic-tac-toe"
+                    data-search="tic tac toe game medium lld"
+                    data-problem-id="tic-tac-toe"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design Tic Tac Toe Game</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Tic Tac Toe Game"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=pub-sub-system"
+                    data-search="pub sub system medium lld"
+                    data-problem-id="pub-sub-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title">Design Pub Sub System</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Pub Sub System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=elevator-system"
+                    data-search="elevator system medium lld"
+                    data-problem-id="elevator-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design an Elevator System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design an Elevator System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=car-rental-system"
+                    data-search="car rental system medium lld"
+                    data-problem-id="car-rental-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design Car Rental System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Car Rental System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=online-auction-system"
+                    data-search="online auction system medium lld"
+                    data-problem-id="online-auction-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design an Online Auction System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design an Online Auction System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=hotel-management-system"
+                    data-search="hotel management system medium lld"
+                    data-problem-id="hotel-management-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design Hotel Management System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Hotel Management System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=digital-wallet-service"
+                    data-search="digital wallet service medium lld"
+                    data-problem-id="digital-wallet-service"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Digital Wallet Service</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Digital Wallet Service"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=airline-management-system"
+                    data-search="airline management system medium lld"
+                    data-problem-id="airline-management-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design Airline Management System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Airline Management System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=library-management-system"
+                    data-search="library management system medium lld"
+                    data-problem-id="library-management-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Library Management System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Library Management System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=social-networking-service"
+                    data-search="social network facebook medium lld"
+                    data-problem-id="social-networking-service"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Social Network like Facebook</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Social Network like Facebook"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=restaurant-management-system"
+                    data-search="restaurant management system medium lld"
+                    data-problem-id="restaurant-management-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design Restaurant Management System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Restaurant Management System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=concert-ticket-booking-system"
+                    data-search="concert ticket booking system medium lld"
+                    data-problem-id="concert-ticket-booking-system"
+                    data-difficulty="medium"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Concert Ticket Booking System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Concert Ticket Booking System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="problems-column">
+              <h3 class="pill-heading">Hard</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=cricinfo"
+                    data-search="cricinfo hard lld"
+                    data-problem-id="cricinfo"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title">Design CricInfo</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design CricInfo"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=splitwise"
+                    data-search="splitwise hard lld"
+                    data-problem-id="splitwise"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title">Design Splitwise</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Splitwise"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=chess-game"
+                    data-search="chess game hard lld"
+                    data-problem-id="chess-game"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title">Design Chess Game</span>
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Chess Game"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=snake-and-ladder"
+                    data-search="snake ladder hard lld"
+                    data-problem-id="snake-and-ladder"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design a Snake and Ladder game</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design a Snake and Ladder game"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=ride-sharing-service"
+                    data-search="ride sharing uber hard lld"
+                    data-problem-id="ride-sharing-service"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Ride-Sharing Service like Uber</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Ride-Sharing Service like Uber"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=course-registration-system"
+                    data-search="course registration system hard lld"
+                    data-problem-id="course-registration-system"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Course Registration System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Course Registration System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=movie-ticket-booking-system"
+                    data-search="movie ticket booking system hard lld"
+                    data-problem-id="movie-ticket-booking-system"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Movie Ticket Booking System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Movie Ticket Booking System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=online-shopping-service"
+                    data-search="online shopping amazon hard lld"
+                    data-problem-id="online-shopping-service"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Online Shopping System like Amazon</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Online Shopping System like Amazon"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=online-stock-brokerage-system"
+                    data-search="online stock brokerage system hard lld"
+                    data-problem-id="online-stock-brokerage-system"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Online Stock Brokerage System</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Online Stock Brokerage System"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=music-streaming-service"
+                    data-search="music streaming spotify hard lld"
+                    data-problem-id="music-streaming-service"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Music Streaming Service like Spotify</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Music Streaming Service like Spotify"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card problem-card"
+                    href="./problem.html?slug=food-delivery-service"
+                    data-search="food delivery swiggy hard lld"
+                    data-problem-id="food-delivery-service"
+                    data-difficulty="hard"
+                  >
+                    <span class="problem-card-title"
+                      >Design Online Food Delivery Service like Swiggy</span
+                    >
+                    <button
+                      class="problem-progress-toggle"
+                      type="button"
+                      aria-label="Toggle completion for Design Online Food Delivery Service like Swiggy"
+                    >
+                      <span class="progress-check"></span>
+                    </button>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="concurrency-problems" class="section">
+          <header class="section-header">
+            <h2>⏱️ Concurrency Problems</h2>
+            <p>Hands-on questions to solidify your multi-threaded thinking.</p>
+          </header>
+          <div class="grid grid-3">
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/print-foobar-alternately"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="print foobar alternately concurrency problem"
+            >
+              <h3>Print FooBar Alternately</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/print-zero-even-odd"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="print zero even odd concurrency problem"
+            >
+              <h3>Print Zero Even Odd</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/fizz-buzz-multithreaded"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="fizz buzz multithreaded concurrency problem"
+            >
+              <h3>Fizz Buzz Multithreaded</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/building-h2o"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="building h2o concurrency problem"
+            >
+              <h3>Building H2O Molecule</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/design-thread-safe-cache-with-ttl"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="thread-safe cache ttl concurrency problem"
+            >
+              <h3>Thread-Safe Cache with TTL</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/design-concurrent-hashmap"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="concurrent hashmap concurrency problem"
+            >
+              <h3>Concurrent HashMap</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/design-thread-safe-blocking-queue"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="thread-safe blocking queue concurrency problem"
+            >
+              <h3>Thread-Safe Blocking Queue</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/design-concurrent-bloom-filter"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="concurrent bloom filter concurrency problem"
+            >
+              <h3>Concurrent Bloom Filter</h3>
+            </a>
+            <a
+              class="card resource-card"
+              href="https://algomaster.io/learn/concurrency-interview/multi-threaded-merge-sort"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-search="multi-threaded merge sort concurrency problem"
+            >
+              <h3>Multi-threaded Merge Sort</h3>
+            </a>
+          </div>
+        </section>
+
+        <section id="resources" class="section">
+          <header class="section-header">
+            <h2>📇 Courses &amp; Resources</h2>
+            <p>Go deeper with structured content beyond individual problems.</p>
+          </header>
+
+          <div class="grid grid-2">
+            <div class="subsection">
+              <h3 class="pill-heading">Courses</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://algomaster.io/learn/lld/course-introduction"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="master lld interviews course"
+                  >
+                    Master LLD Interviews – AlgoMaster.io
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://algomaster.io/learn/concurrency-interview"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="master concurrency interviews course"
+                  >
+                    Master Concurrency Interviews – AlgoMaster.io
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="subsection">
+              <h3 class="pill-heading">Books</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://www.amazon.in/dp/9385889753"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="head first design patterns book"
+                  >
+                    Head First Design Patterns
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://www.amazon.in/dp/B001GSTOAM"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="clean code book"
+                  >
+                    Clean Code
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://www.amazon.in/dp/0134757599"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="refactoring improving design existing code book"
+                  >
+                    Refactoring: Improving the Design of Existing Code
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="subsection">
+              <h3 class="pill-heading">Newsletter</h3>
+              <p>
+                Stay up to date with new problems, explanations, and interview tips.
+              </p>
+              <a
+                class="btn inline"
+                href="https://blog.algomaster.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-search="algomaster newsletter"
+                >AlgoMaster Newsletter</a
+              >
+            </div>
+
+            <div class="subsection">
+              <h3 class="pill-heading">Additional Resources</h3>
+              <ul class="link-list">
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://www.coursera.org/learn/object-oriented-design"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="coursera object-oriented design course"
+                  >
+                    Coursera – Object-Oriented Design
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://www.coursera.org/learn/design-patterns"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="coursera design patterns course"
+                  >
+                    Coursera – Design Patterns
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="resource-card"
+                    href="https://github.com/DovAmir/awesome-design-patterns"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-search="github awesome design patterns"
+                  >
+                    GitHub – Awesome Design Patterns
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-main">
+          <div>
+            <h3>Contributing</h3>
+            <p>
+              Contributions are welcome! Add new problems, improve explanations, or fix
+              errors by opening a pull request on the repository.
+            </p>
+          </div>
+          <div class="footer-actions">
+            <a
+              class="btn ghost"
+              href="https://github.com/hemantsonu20/awesome-low-level-design"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository on GitHub
+            </a>
+          </div>
+        </div>
+        <p class="footer-meta">
+          If you find this resource helpful, please give the repository a star and share
+          it with others!
+        </p>
+      </footer>
+    </div>
+
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+      ↑
+    </button>
+
+    <script src="./script.js"></script>
+  </body>
+  </html>
+
