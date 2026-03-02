@@ -22,9 +22,8 @@
       applyTheme(stored);
       return;
     }
-    const prefersDark = window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(prefersDark ? "dark" : "light");
+    // First-time visitors default to dark mode, regardless of OS preference.
+    applyTheme("dark");
   }
 
   function toggleTheme() {
@@ -102,7 +101,24 @@
       const raw = window.localStorage.getItem(PROBLEM_PROGRESS_KEY);
       if (!raw) return {};
       const parsed = JSON.parse(raw);
-      return parsed && typeof parsed === "object" ? parsed : {};
+      if (!parsed || typeof parsed !== "object") return {};
+
+      // Normalize legacy string-based format to object-based { done, starred } format
+      const normalized = {};
+      for (const [key, value] of Object.entries(parsed)) {
+        if (typeof value === "string") {
+          normalized[key] = {
+            done: value === "done",
+            starred: false,
+          };
+        } else if (value && typeof value === "object") {
+          normalized[key] = {
+            done: !!value.done,
+            starred: !!value.starred,
+          };
+        }
+      }
+      return normalized;
     } catch {
       return {};
     }
@@ -139,7 +155,8 @@
     const total = cards.length;
     const completed = cards.filter((card) => {
       const id = card.dataset.problemId;
-      return id && progressMap[id] === "done";
+      const meta = id && progressMap[id];
+      return !!(meta && meta.done);
     }).length;
 
     const textEl = document.getElementById("problemsProgressText");
@@ -165,13 +182,23 @@
     const applyStateToCard = (card) => {
       const id = card.dataset.problemId;
       const toggle = card.querySelector(".problem-progress-toggle");
-      const isDone = id && progressMap[id] === "done";
+      const starToggle = card.querySelector(".problem-star-toggle");
+      const meta = id && progressMap[id];
+      const isDone = !!(meta && meta.done);
+      const isStarred = !!(meta && meta.starred);
+
       if (isDone) {
         card.classList.add("is-completed");
         if (toggle) toggle.classList.add("is-completed");
       } else {
         card.classList.remove("is-completed");
         if (toggle) toggle.classList.remove("is-completed");
+      }
+
+      if (isStarred) {
+        card.classList.add("is-starred");
+      } else {
+        card.classList.remove("is-starred");
       }
     };
 
@@ -180,18 +207,43 @@
 
     cards.forEach((card) => {
       const toggle = card.querySelector(".problem-progress-toggle");
-      if (!toggle) return;
-      toggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        const id = card.dataset.problemId;
-        if (!id) return;
-        const current = progressMap[id] === "done";
-        progressMap[id] = current ? "todo" : "done";
-        applyStateToCard(card);
-        updateProblemsProgressSummary(cards, progressMap);
-        saveProblemProgress(progressMap);
-      });
+      const starToggle = card.querySelector(".problem-star-toggle");
+
+      if (toggle) {
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const id = card.dataset.problemId;
+          if (!id) return;
+          const currentMeta = progressMap[id] || { done: false, starred: false };
+          const next = {
+            done: !currentMeta.done,
+            starred: !!currentMeta.starred,
+          };
+          progressMap[id] = next;
+          applyStateToCard(card);
+          updateProblemsProgressSummary(cards, progressMap);
+          saveProblemProgress(progressMap);
+        });
+      }
+
+      if (starToggle) {
+        starToggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const id = card.dataset.problemId;
+          if (!id) return;
+          const currentMeta = progressMap[id] || { done: false, starred: false };
+          const next = {
+            done: !!currentMeta.done,
+            starred: !currentMeta.starred,
+          };
+          progressMap[id] = next;
+          applyStateToCard(card);
+          updateProblemsProgressSummary(cards, progressMap);
+          saveProblemProgress(progressMap);
+        });
+      }
     });
   }
 
@@ -276,14 +328,14 @@
       cards.forEach((card) => {
         const difficulty = (card.dataset.difficulty || "").toLowerCase();
         const id = card.dataset.problemId;
-        const isDone = id && progressMap[id] === "done";
+        const meta = id && progressMap[id];
+        const isDone = !!(meta && meta.done);
+        const isStarred = !!(meta && meta.starred);
         let visible = true;
 
         switch (value) {
-          case "easy":
-          case "medium":
-          case "hard":
-            visible = difficulty === value;
+          case "starred":
+            visible = isStarred;
             break;
           case "completed":
             visible = isDone;
@@ -295,10 +347,11 @@
             visible = true;
         }
 
+        const target = card.closest("li") || card;
         if (visible) {
-          card.classList.remove("hidden");
+          target.classList.remove("hidden");
         } else {
-          card.classList.add("hidden");
+          target.classList.add("hidden");
         }
       });
     }

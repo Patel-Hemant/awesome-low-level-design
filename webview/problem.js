@@ -591,28 +591,57 @@
 
   function initDetailProgress(slug) {
     const btn = document.getElementById("detailProgressToggle");
-    if (!btn) return;
+    const starBtn = document.getElementById("detailStarToggle");
+    if (!btn && !starBtn) return;
 
     let map = loadProblemProgress();
     const applyState = () => {
-      const done = map[slug] === "done";
-      if (done) {
-        btn.classList.add("is-completed");
-        btn.textContent = "Mark as not completed";
-      } else {
-        btn.classList.remove("is-completed");
-        btn.textContent = "Mark as completed";
+      const meta = map[slug] || { done: false, starred: false };
+      if (btn) {
+        if (meta.done) {
+          btn.classList.add("is-completed");
+          btn.textContent = "Mark as not completed";
+        } else {
+          btn.classList.remove("is-completed");
+          btn.textContent = "Mark as completed";
+        }
+      }
+      if (starBtn) {
+        if (meta.starred) {
+          starBtn.classList.add("is-completed");
+          starBtn.textContent = "Unstar this problem";
+        } else {
+          starBtn.classList.remove("is-completed");
+          starBtn.textContent = "Star this problem";
+        }
       }
     };
 
     applyState();
 
-    btn.addEventListener("click", () => {
-      const current = map[slug] === "done";
-      map[slug] = current ? "todo" : "done";
-      saveProblemProgress(map);
-      applyState();
-    });
+    if (btn) {
+      btn.addEventListener("click", () => {
+        const currentMeta = map[slug] || { done: false, starred: false };
+        map[slug] = {
+          done: !currentMeta.done,
+          starred: !!currentMeta.starred,
+        };
+        saveProblemProgress(map);
+        applyState();
+      });
+    }
+
+    if (starBtn) {
+      starBtn.addEventListener("click", () => {
+        const currentMeta = map[slug] || { done: false, starred: false };
+        map[slug] = {
+          done: !!currentMeta.done,
+          starred: !currentMeta.starred,
+        };
+        saveProblemProgress(map);
+        applyState();
+      });
+    }
   }
 
   function init() {
