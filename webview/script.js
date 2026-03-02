@@ -74,6 +74,24 @@
     }
 
     searchInput.addEventListener("input", handleSearch);
+
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+
+      // Find the first non-faded, visible result and scroll to it.
+      const firstMatch = cards.find((el) => {
+        if (el.classList.contains("faded")) return false;
+        const li = el.closest("li");
+        if (li && li.classList.contains("hidden")) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      });
+
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
   }
 
   function initScrollTop() {
