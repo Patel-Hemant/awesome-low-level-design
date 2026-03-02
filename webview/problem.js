@@ -254,7 +254,10 @@
     if (metaSourceEl) metaSourceEl.textContent = problem.file.replace("../", "");
     if (summaryEl) summaryEl.textContent = problem.summary || "";
     if (mdLink) {
-      mdLink.href = problem.file;
+      const githubBlobBase =
+        "https://github.com/ashishps1/awesome-low-level-design/blob/main/";
+      const relativeProblemPath = problem.file.replace(/^\.\.\//, "");
+      mdLink.href = githubBlobBase + relativeProblemPath;
     }
 
     document.title = `${problem.title} • Awesome Low Level Design`;
@@ -296,6 +299,28 @@
     return result;
   }
 
+  function applyLinks(text) {
+    return text.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      (_m, linkText, url) => {
+        let finalUrl = url;
+        if (!/^https?:\/\//i.test(url)) {
+          if (url.startsWith("../solutions/")) {
+            const githubBase =
+              "https://github.com/ashishps1/awesome-low-level-design/tree/main/";
+            const relative = url.replace(/^\.\.\//, "");
+            finalUrl = githubBase + relative;
+          } else {
+            finalUrl = url;
+          }
+        }
+        return `<a href="${finalUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(
+          linkText
+        )}</a>`;
+      }
+    );
+  }
+
   function markdownToHtml(markdown) {
     const lines = markdown.replace(/\r\n/g, "\n").split("\n");
     let html = "";
@@ -319,35 +344,40 @@
 
       if (line.startsWith("#### ")) {
         closeList();
-        const content = applyInlineFormatting(line.slice(5).trim());
+        const formatted = applyInlineFormatting(line.slice(5).trim());
+        const content = applyLinks(formatted);
         html += `<h4>${content}</h4>`;
         continue;
       }
 
       if (line.startsWith("### ")) {
         closeList();
-        const content = applyInlineFormatting(line.slice(4).trim());
+        const formatted = applyInlineFormatting(line.slice(4).trim());
+        const content = applyLinks(formatted);
         html += `<h3>${content}</h3>`;
         continue;
       }
 
       if (line.startsWith("## ")) {
         closeList();
-        const content = applyInlineFormatting(line.slice(3).trim());
+        const formatted = applyInlineFormatting(line.slice(3).trim());
+        const content = applyLinks(formatted);
         html += `<h2>${content}</h2>`;
         continue;
       }
 
       if (line.startsWith("# ")) {
         closeList();
-        const content = applyInlineFormatting(line.slice(2).trim());
+        const formatted = applyInlineFormatting(line.slice(2).trim());
+        const content = applyLinks(formatted);
         html += `<h1>${content}</h1>`;
         continue;
       }
 
       const listMatch = line.match(/^[-*]\s+(.+)/);
       if (listMatch) {
-        const content = applyInlineFormatting(listMatch[1].trim());
+        const formatted = applyInlineFormatting(listMatch[1].trim());
+        const content = applyLinks(formatted);
         if (!inList) {
           html += "<ul>";
           inList = true;
@@ -359,7 +389,8 @@
       const orderedMatch = line.match(/^\d+\.\s+(.+)/);
       if (orderedMatch) {
         closeList();
-        const content = applyInlineFormatting(orderedMatch[1].trim());
+        const formatted = applyInlineFormatting(orderedMatch[1].trim());
+        const content = applyLinks(formatted);
         html += `<p>${orderedMatch[0].replace(
           /^(\d+\.)\s+.+/,
           "$1"
@@ -378,15 +409,155 @@
         continue;
       }
 
-      const linkReplaced = line.replace(
-        /\[([^\]]+)\]\(([^)]+)\)/g,
-        (_m, text, url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`
-      );
-      html += `<p>${applyInlineFormatting(linkReplaced)}</p>`;
+      const formattedLine = applyInlineFormatting(line);
+      const withLinks = applyLinks(formattedLine);
+      html += `<p>${withLinks}</p>`;
     }
 
     closeList();
     return html;
+  }
+
+  function initImageLightbox() {
+    const container = document.querySelector(".markdown-body");
+    if (!container) return;
+
+    const images = Array.from(container.querySelectorAll("img"));
+    if (!images.length) return;
+
+    let overlayEl = null;
+
+    const closeOverlay = () => {
+      if (overlayEl && overlayEl.parentNode) {
+        overlayEl.parentNode.removeChild(overlayEl);
+      }
+      overlayEl = null;
+      document.removeEventListener("keydown", handleKey);
+    };
+
+    const handleKey = (e) => {
+      if (e.key === "Escape") {
+        closeOverlay();
+      }
+    };
+
+    const openOverlay = (src, alt) => {
+      closeOverlay();
+
+      overlayEl = document.createElement("div");
+      overlayEl.className = "image-lightbox-overlay";
+
+      const content = document.createElement("div");
+      content.className = "image-lightbox-content";
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt || "";
+
+      let scale = 1;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      const applyTransform = () => {
+        img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+      };
+
+      const closeBtn = document.createElement("button");
+      closeBtn.type = "button";
+      closeBtn.className = "image-lightbox-close";
+      closeBtn.setAttribute("aria-label", "Close image");
+      closeBtn.textContent = "×";
+
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeOverlay();
+      });
+
+      const zoomControls = document.createElement("div");
+      zoomControls.className = "image-lightbox-zoom";
+
+      const zoomOutBtn = document.createElement("button");
+      zoomOutBtn.type = "button";
+      zoomOutBtn.setAttribute("aria-label", "Zoom out");
+      zoomOutBtn.textContent = "−";
+
+      const zoomInBtn = document.createElement("button");
+      zoomInBtn.type = "button";
+      zoomInBtn.setAttribute("aria-label", "Zoom in");
+      zoomInBtn.textContent = "+";
+
+      zoomOutBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        scale = Math.max(0.5, scale - 0.25);
+        applyTransform();
+      });
+
+      zoomInBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        scale = Math.min(3, scale + 0.25);
+        applyTransform();
+      });
+
+      let isDragging = false;
+      let lastX = 0;
+      let lastY = 0;
+
+      const onMouseMove = (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        offsetX += dx;
+        offsetY += dy;
+        applyTransform();
+      };
+
+      const onMouseUp = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        img.classList.remove("is-dragging");
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+      };
+
+      img.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isDragging = true;
+        img.classList.add("is-dragging");
+        lastX = e.clientX;
+        lastY = e.clientY;
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      });
+
+      overlayEl.addEventListener("click", () => {
+        closeOverlay();
+      });
+
+      content.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+
+      content.appendChild(img);
+      zoomControls.appendChild(zoomOutBtn);
+      zoomControls.appendChild(zoomInBtn);
+      content.appendChild(zoomControls);
+      content.appendChild(closeBtn);
+      overlayEl.appendChild(content);
+      document.body.appendChild(overlayEl);
+
+      document.addEventListener("keydown", handleKey);
+      applyTransform();
+    };
+
+    images.forEach((img) => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => {
+        openOverlay(img.src, img.alt);
+      });
+    });
   }
 
   async function loadProblem() {
@@ -411,6 +582,7 @@
       }
       const text = await res.text();
       bodyEl.innerHTML = markdownToHtml(text);
+      initImageLightbox();
     } catch (err) {
       bodyEl.innerHTML =
         "<p>Unable to load the markdown content in this environment. You can still open the original markdown file from the sidebar.</p>";

@@ -72,7 +72,12 @@ body.light .icon-button:hover {
   box-shadow: 0 10px 20px rgba(80, 96, 138, 0.4);
 }
 
-body.light .icon-moon {
+body.light .theme-icon-moon {
+  display: none;
+}
+
+body.light .theme-icon-sun {
+  display: inline;
   color: var(--accent);
 }
 
@@ -80,15 +85,20 @@ body.light .hero {
   background: radial-gradient(circle at top, #ffffff 0, #eef1ff 45%);
 }
 
+body.light .search-strip {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
 body.light .search-inner {
-  background: radial-gradient(circle at 0 0, rgba(54, 92, 255, 0.16), transparent)
-      border-box,
-    linear-gradient(to right, #ffffff, #eef1ff) border-box;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 18px rgba(80, 96, 138, 0.16);
 }
 
 body.light .search-control {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: var(--border-subtle);
+  background: #f4f6ff;
+  border-color: rgba(80, 96, 138, 0.18);
 }
 
 body.light .search-control input {
@@ -292,8 +302,17 @@ main {
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
 }
 
-.icon-moon {
+.theme-icon {
   font-size: 0.7rem;
+  line-height: 1;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+.theme-icon-moon {
+  display: inline;
 }
 
 .hero {
@@ -364,6 +383,15 @@ main {
 .btn.primary:hover {
   transform: translateY(-1px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+}
+
+/* Soften hero primary CTA shadow in light mode to match the rest of the page */
+body.light .hero .btn.primary {
+  box-shadow: 0 8px 18px rgba(80, 96, 138, 0.28);
+}
+
+body.light .hero .btn.primary:hover {
+  box-shadow: 0 12px 26px rgba(80, 96, 138, 0.32);
 }
 
 .btn.ghost {
@@ -772,6 +800,12 @@ body.light .problems-column {
   border-color: var(--border-subtle);
 }
 
+/* Lighten shadows for individual LLD problem cards in light mode to avoid heavy "overshadow" */
+body.light .problems-column .resource-card {
+  box-shadow: 0 4px 10px rgba(80, 96, 138, 0.12);
+  border-color: var(--border-subtle);
+}
+
 .link-list {
   list-style: none;
   padding: 0;
@@ -938,6 +972,18 @@ body.light .link-list .resource-card {
 .pill-filter.is-active {
   background: var(--accent-soft);
   border-color: rgba(127, 162, 255, 0.9);
+  color: var(--text);
+}
+
+body.light .pill-filter {
+  background: #ffffff;
+  border-color: var(--border-subtle);
+  color: var(--text-muted);
+}
+
+body.light .pill-filter.is-active {
+  background: var(--accent-soft);
+  border-color: rgba(54, 92, 255, 0.9);
   color: var(--text);
 }
 
@@ -1133,8 +1179,9 @@ body.light .problem-hero {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
+  border: none;
   margin: 0.6rem 0;
+  box-shadow: var(--shadow-subtle);
 }
 
 .markdown-body a {
@@ -1142,6 +1189,117 @@ body.light .problem-hero {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+}
+
+/* Implementation links on problem page – make them look like buttons */
+.markdown-body a[href*="solutions/"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  margin: 0.15rem 0.4rem 0.15rem 0;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated-soft);
+  text-decoration: none;
+  font-size: 0.86rem;
+}
+
+.markdown-body a[href*="solutions/"]::before {
+  content: "⇱";
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+.markdown-body a[href*="solutions/"]:hover {
+  border-color: rgba(127, 162, 255, 0.9);
+  background: var(--bg-elevated);
+  text-decoration: none;
+}
+
+.image-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.image-lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: var(--radius-lg);
+  /* Use a neutral light surface in both themes so white diagrams don't clash
+     with a dark padding area in dark mode. */
+  background: #f9fafc;
+  padding: 0.75rem;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.image-lightbox-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--radius-md);
+  transform-origin: center center;
+  cursor: grab;
+}
+
+.image-lightbox-close {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.35rem;
+  border: none;
+  border-radius: 999px;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.image-lightbox-zoom {
+  position: absolute;
+  top: 0.25rem;
+  right: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.image-lightbox-zoom button {
+  border: none;
+  border-radius: 999px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.image-lightbox-content img.is-dragging {
+  cursor: grabbing;
+}
+
+body.light .image-lightbox-close {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+body.light .image-lightbox-zoom button {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .problem-side {
