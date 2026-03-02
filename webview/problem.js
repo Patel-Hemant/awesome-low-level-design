@@ -402,9 +402,13 @@
       if (imgMatch) {
         closeList();
         const src = imgMatch[1];
-        const resolved = src.startsWith("http")
-          ? src
-          : src.replace("../", "../");
+        let resolved = src;
+        if (!/^https?:\/\//i.test(src)) {
+          const rawBase =
+            "https://raw.githubusercontent.com/Patel-Hemant/awesome-low-level-design/main/";
+          const relativeImgPath = src.replace(/^\.\.\//, "");
+          resolved = rawBase + relativeImgPath;
+        }
         html += `<p><img src="${resolved}" alt="" /></p>`;
         continue;
       }
@@ -576,7 +580,12 @@
     applyProblemMeta(config, slug);
 
     try {
-      const res = await fetch(config.file);
+      const rawBase =
+        "https://raw.githubusercontent.com/Patel-Hemant/awesome-low-level-design/main/";
+      const relativeProblemPath = config.file.replace(/^\.\.\//, "");
+      const mdUrl = rawBase + relativeProblemPath;
+
+      const res = await fetch(mdUrl);
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }
