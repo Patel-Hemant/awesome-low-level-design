@@ -223,6 +223,13 @@ main {
   gap: 0.65rem;
 }
 
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: inherit;
+}
+
 .logo {
   width: 36px;
   height: 36px;
