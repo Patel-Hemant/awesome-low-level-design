@@ -786,6 +786,7 @@ body.light .roadmap-step:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.4rem;
+  align-items: flex-start;
   max-width: 1120px;
   margin: 0 auto;
 }
@@ -811,6 +812,12 @@ body.light .problems-column {
 body.light .problems-column .resource-card {
   box-shadow: 0 4px 10px rgba(80, 96, 138, 0.12);
   border-color: var(--border-subtle);
+}
+
+body.light .problems-column .problem-card:hover {
+  background: linear-gradient(135deg, #eef1ff, #ffffff);
+  border-color: rgba(54, 92, 255, 0.6);
+  box-shadow: 0 10px 18px rgba(80, 96, 138, 0.2);
 }
 
 .link-list {
@@ -1025,9 +1032,20 @@ body.light .pill-filter.is-active {
     border-color var(--transition-fast), transform var(--transition-fast);
 }
 
+body.light .problem-progress-toggle,
+body.light .pattern-progress-toggle {
+  background: #f4f6ff;
+  border-color: rgba(54, 92, 255, 0.28);
+}
+
 .problem-progress-toggle:hover,
 .pattern-progress-toggle:hover {
   transform: translateY(-1px);
+}
+
+body.light .problem-progress-toggle:hover,
+body.light .pattern-progress-toggle:hover {
+  border-color: rgba(54, 92, 255, 0.5);
 }
 
 .problem-star-toggle {
@@ -1088,6 +1106,10 @@ body.light .pill-filter.is-active {
   height: 10px;
   border-radius: 999px;
   border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+body.light .progress-check {
+  border-color: rgba(54, 92, 255, 0.55);
 }
 
 .problem-progress-toggle.is-completed .progress-check {
@@ -1466,4 +1488,3 @@ body.light .image-lightbox-zoom button {
     width: 100%;
   }
 }
-
