@@ -255,7 +255,7 @@
     if (summaryEl) summaryEl.textContent = problem.summary || "";
     if (mdLink) {
       const githubBlobBase =
-        "https://github.com/ashishps1/awesome-low-level-design/blob/main/";
+        "https://github.com/Patel-Hemant/awesome-low-level-design/blob/main/";
       const relativeProblemPath = problem.file.replace(/^\.\.\//, "");
       mdLink.href = githubBlobBase + relativeProblemPath;
     }
@@ -307,7 +307,7 @@
         if (!/^https?:\/\//i.test(url)) {
           if (url.startsWith("../solutions/")) {
             const githubBase =
-              "https://github.com/ashishps1/awesome-low-level-design/tree/main/";
+              "https://github.com/Patel-Hemant/awesome-low-level-design/tree/main/";
             const relative = url.replace(/^\.\.\//, "");
             finalUrl = githubBase + relative;
           } else {

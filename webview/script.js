@@ -7,6 +7,42 @@
   const THEME_STORAGE_KEY = "lld-webview-theme";
   const PROBLEM_PROGRESS_KEY = "lld-webview-problem-progress";
   const PATTERN_PROGRESS_KEY = "lld-webview-pattern-progress";
+  const PROBLEM_PRIORITY_MAP = {
+    "parking-lot": "must",
+    "logging-framework": "must",
+    "vending-machine": "should",
+    "task-management-system": "should",
+    "stack-overflow": "optional",
+    "traffic-signal": "optional",
+    "coffee-vending-machine": "skip",
+
+    "lru-cache": "must",
+    atm: "must",
+    "pub-sub-system": "must",
+    "elevator-system": "must",
+    "car-rental-system": "should",
+    "online-auction-system": "should",
+    "hotel-management-system": "should",
+    "digital-wallet-service": "should",
+    "airline-management-system": "should",
+    "library-management-system": "optional",
+    "social-networking-service": "optional",
+    "restaurant-management-system": "optional",
+    "concert-ticket-booking-system": "optional",
+    "tic-tac-toe": "skip",
+
+    "ride-sharing-service": "must",
+    "movie-ticket-booking-system": "must",
+    "online-shopping-service": "must",
+    splitwise: "should",
+    "music-streaming-service": "should",
+    "food-delivery-service": "should",
+    "course-registration-system": "optional",
+    "online-stock-brokerage-system": "optional",
+    cricinfo: "optional",
+    "chess-game": "skip",
+    "snake-and-ladder": "skip",
+  };
 
   function applyTheme(theme) {
     if (theme === "light") {
@@ -197,6 +233,13 @@
 
     let progressMap = loadProblemProgress();
 
+    // Attach static recommendation priority for filtering
+    cards.forEach((card) => {
+      const id = card.dataset.problemId;
+      if (!id) return;
+      card.dataset.priority = PROBLEM_PRIORITY_MAP[id] || "";
+    });
+
     const applyStateToCard = (card) => {
       const id = card.dataset.problemId;
       const toggle = card.querySelector(".problem-progress-toggle");
@@ -346,12 +389,19 @@
       cards.forEach((card) => {
         const difficulty = (card.dataset.difficulty || "").toLowerCase();
         const id = card.dataset.problemId;
+        const priority = (card.dataset.priority || "").toLowerCase();
         const meta = id && progressMap[id];
         const isDone = !!(meta && meta.done);
         const isStarred = !!(meta && meta.starred);
         let visible = true;
 
         switch (value) {
+          case "must":
+          case "should":
+          case "optional":
+          case "skip":
+            visible = priority === value;
+            break;
           case "starred":
             visible = isStarred;
             break;
