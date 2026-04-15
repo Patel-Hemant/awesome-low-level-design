@@ -777,6 +777,13 @@ body.light .roadmap-step:hover {
   height: 4px;
 }
 
+.patterns-filters {
+  margin-top: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .chip-row.tight {
   gap: 0.4rem;
 }

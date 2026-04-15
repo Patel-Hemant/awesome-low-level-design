@@ -43,6 +43,32 @@
     "chess-game": "skip",
     "snake-and-ladder": "skip",
   };
+  const PATTERN_PRIORITY_MAP = {
+    singleton: "must",
+    "factory-method": "must",
+    adapter: "must",
+    decorator: "must",
+    facade: "must",
+    proxy: "must",
+    observer: "must",
+    strategy: "must",
+    command: "must",
+    state: "must",
+
+    "abstract-factory": "should",
+    builder: "should",
+    composite: "should",
+    bridge: "should",
+    "template-method": "should",
+    mediator: "should",
+
+    prototype: "optional",
+    flyweight: "optional",
+    visitor: "optional",
+    memento: "optional",
+    "chain-of-responsibility": "optional",
+    iterator: "optional",
+  };
 
   function applyTheme(theme) {
     if (theme === "light") {
@@ -335,6 +361,12 @@
 
     let progressMap = loadPatternProgress();
 
+    cards.forEach((card) => {
+      const id = card.dataset.patternId;
+      if (!id) return;
+      card.dataset.patternPriority = PATTERN_PRIORITY_MAP[id] || "";
+    });
+
     const applyStateToCard = (card) => {
       const id = card.dataset.patternId;
       const toggle = card.querySelector(".pattern-progress-toggle");
@@ -364,6 +396,41 @@
         applyStateToCard(card);
         updatePatternsProgressSummary(cards, progressMap);
         savePatternProgress(progressMap);
+      });
+    });
+  }
+
+  function initPatternFilters() {
+    if (body.dataset.page !== "overview") return;
+    const filterContainer = document.querySelector(".patterns-filters");
+    const cards = Array.from(
+      document.querySelectorAll(".pattern-card[data-pattern-id]")
+    );
+    if (!filterContainer || !cards.length) return;
+
+    const buttons = Array.from(
+      filterContainer.querySelectorAll(".pill-filter")
+    );
+
+    function applyFilter(value) {
+      cards.forEach((card) => {
+        const priority = (card.dataset.patternPriority || "").toLowerCase();
+        const target = card.closest("li") || card;
+        const visible = value === "all" ? true : priority === value;
+        if (visible) {
+          target.classList.remove("hidden");
+        } else {
+          target.classList.add("hidden");
+        }
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const value = btn.dataset.patternFilter || "all";
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        applyFilter(value);
       });
     });
   }
@@ -517,6 +584,7 @@
     initProblemProgress();
     initProblemFilters();
     initPatternProgress();
+    initPatternFilters();
     initProgressImportExport();
   }
 
